@@ -1,0 +1,22 @@
+Internet:
+Router:
+  Navn:Router-INT
+  Interface:ge-0/0/0 ge-0/0/1 ge-0/0/2
+  IP:
+Switch:
+  Name:SW1
+  Interfaces:eth1 eth2 eth3
+  IP:
+Server:
+  Name:Web Server1
+  Interfaces:eth0
+  IP:
+Client:
+  Name:User1
+  Interface:eth0
+  IP:
+
+Internet->Router-INT,ge0/0/2
+Router-INT,ge0/0/2->SW1,eth1
+SW1,eth3->Web Server1,eth0
+SW1,eth2->User1,eth0
