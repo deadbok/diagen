@@ -1,22 +1,33 @@
 Internet:
 Router:
-  Navn:Router-INT
-  Interface:ge-0/0/0 ge-0/0/1 ge-0/0/2
-  IP:
+  Navn: "Router-INT"
+  Interface:
+  - ge-0/0/0
+  - ge-0/0/1
+  - ge-0/0/2
 Switch:
-  Name:SW1
-  Interfaces:eth1 eth2 eth3
-  IP:
+  Name: SW1
+  Interfaces:
+  - eth1
+  - eth2
+  - eth3
 Server:
-  Name:Web Server1
-  Interfaces:eth0
-  IP:
+  Name: "Web Server1"
+  Interfaces:
+  - eth0
 Client:
-  Name:User1
-  Interface:eth0
-  IP:
+  Name: User1
+  Interface:
+  - eth0
 
-Internet->Router-INT,ge0/0/2
-Router-INT,ge0/0/2->SW1,eth1
-SW1,eth3->Web Server1,eth0
-SW1,eth2->User1,eth0
+Internet:
+  Router-INT: ge0/0/2
+
+Router-INT:
+  ge0/0/2:
+    SW1: eth1
+SW1:
+  eth3:
+    Web Server1: eth0
+  eth2:
+    User1: eth0
