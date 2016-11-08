@@ -1,7 +1,7 @@
-#
-# from
-#   https://stackoverflow.com/questions/14359557/reading-yaml-in-python
-
+'''
+from
+  https://stackoverflow.com/questions/14359557/reading-yaml-in-python
+'''
 
 import yaml
 
