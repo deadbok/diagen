@@ -1,33 +1,28 @@
 Internet:
-Router:
-  Navn: "Router-INT"
-  Interface:
-  - ge-0/0/0
-  - ge-0/0/1
-  - ge-0/0/2
-Switch:
-  Name: SW1
-  Interfaces:
-  - eth1
-  - eth2
-  - eth3
-Server:
-  Name: "Web Server1"
-  Interfaces:
-  - eth0
-Client:
-  Name: User1
-  Interface:
-  - eth0
-
-Internet:
-  Router-INT: ge0/0/2
+  type: internet
+  interfaces:
+    uplink: Router-INT.ge0/0/0
 
 Router-INT:
-  ge0/0/2:
-    SW1: eth1
+  type: router
+  interfaces:
+    ge-0/0/0: Internet.uplink
+    ge-0/0/1:
+    ge-0/0/2: SW1.eth1
+
 SW1:
-  eth3:
-    Web Server1: eth0
-  eth2:
-    User1: eth0
+  type: switch
+  interfaces:
+    eth1: Router-INT.ge-0/0/2
+    eth2: User01.eth0
+    eth3: Web Server01.eth0
+
+"Web Server01":
+  type: server
+  interfaces:
+    eth0: SW1.eth3
+
+User01:
+  type: client
+  interfaces:
+    eth0: SW1.eth2
