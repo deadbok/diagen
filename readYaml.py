@@ -7,13 +7,11 @@ import yaml
 
 def readYaml( filename ):
     stream = open(filename, "r")
-    docs = yaml.load_all(stream)
+    docs = yaml.load(stream)
     return docs
 
 
 if __name__ == "__main__":
     docs = readYaml( "test/inputA.yml" )
     for doc in docs:
-        for k,v in doc.items():
-            print k, "->", v
-        print "\n",
+        print doc, " -> ", docs[doc]
