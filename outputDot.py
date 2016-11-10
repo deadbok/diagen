@@ -20,7 +20,21 @@ class L2Diagram:
 
     def addConnections( self, connections ):
         for conn in connections:
-            self._graph.edge( conn[0], conn[1] )
+            try:
+                self.addConnection( conn )
+            except AttributeError, ex:
+                # if either dst or src is None
+                pass
+
+    def addConnection( self, connection ):
+        # all connections are in duplex, so skipping one
+        if connection[0] > connection[1]:
+            return
+
+        src = connection[0].split(".")
+        dst = connection[1].split(".")
+        self._graph.edge( src[0], dst[0] )
+
 
     def generateOutput( self, graphname ):
         self._graph.render( "%s.%s"%(graphname, 'dot') )
