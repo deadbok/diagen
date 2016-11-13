@@ -1,2 +1,11 @@
-digraph G {Internet->Router->Switch->Client
-Switch->Server}
+graph {
+	Internet
+	"Router-INT"
+	SW1
+	User01
+	"Web Server01"
+		SW1 -- "Web Server01"
+		SW1 -- User01
+		"Router-INT" -- SW1
+		Internet -- "Router-INT"
+}
